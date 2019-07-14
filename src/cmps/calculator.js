@@ -224,7 +224,7 @@ class Calculator extends React.Component {
       total = parseFloat(value.slice(0, pos));
     }
     while (value[pos] != "=") {
-      console.log("value[pos]: "  + value[pos] +  " total: " + total);
+      console.log("value: " + value + " pos: " + pos + " value[pos]: "  + value[pos] +  " total: " + total);
       let end = this.nextNumber(value, pos + 1);
       console.log("next number: " + (parseFloat(value.slice(pos + 1, end))));
       total = this.evalOp(total, parseFloat(value.slice(pos + 1, end)), value[pos]);
