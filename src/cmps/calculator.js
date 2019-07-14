@@ -184,6 +184,7 @@ class Calculator extends React.Component {
   //Return the string representation of the next floating point number in the equation starting from position
   //startPos in the provided text
   nextNumber(text, startPos) {
+    console.log("nextnumber start: " + startPos);
     let start = startPos;
     let end = text.length - 1;
       if (NEG_REG.test(text[startPos])) {
@@ -191,6 +192,7 @@ class Calculator extends React.Component {
     }
     for (let i = start; i < text.length; i++) {
       if (OP_REG.test(text[i]) || text[i] == "=") {
+        console.log("text[i]: " + text[i] + " i: " + i);
         end = i - 1;
         break;
       }
