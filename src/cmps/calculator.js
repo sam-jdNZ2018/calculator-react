@@ -191,6 +191,7 @@ class Calculator extends React.Component {
       start = start + 1;
     }
     for (let i = start; i < text.length; i++) {
+      console.log("loop i:  " + i + " text[i]: " + text[i]);
       if (OP_REG.test(text[i]) || text[i] == "=") {
         console.log("text[i]: " + text[i] + " i: " + i);
         end = i - 1;
