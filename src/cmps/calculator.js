@@ -12,20 +12,6 @@ const SIGN_REG = /[\+\-]{1}/;
 const NEG_REG = /[\-]{1}/;
 const NON_NEG_REG = /[\+\×\÷]{1}/;
 
-class Display extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div id="display_cont">
-        <input id="eq_display" type="text" value={this.props.eq} readOnly />
-        <input id="display" type="text" value={this.props.curr} readOnly />
-      </div>
-    );
-  }
-}
-
 class Calculator extends React.Component {
   constructor(props) {
     super(props);
