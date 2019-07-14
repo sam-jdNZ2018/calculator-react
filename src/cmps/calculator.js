@@ -12,14 +12,6 @@ const SIGN_REG = /[\+\-]{1}/;
 const NEG_REG = /[\-]{1}/;
 const NON_NEG_REG = /[\+\×\÷]{1}/;
 
-const CalcButton = props => {
-  return(
-    <button id={props.id} className="calc_but" onClick={() => props.handler(props.value)}>
-      {props.value}
-    </button>
-  );
-}
-
 class Display extends React.Component {
   constructor(props) {
     super(props);
