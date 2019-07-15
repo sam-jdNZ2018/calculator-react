@@ -118,13 +118,14 @@ class Calculator extends React.Component {
   }
 
   handleEquals(value) {
-    let newEq = this.state.eq + value;
+    let newEq = this.state.eq 
     let now = this.state.curr;
     let final = this.state.result ;
     if (this.state.eq.length == 0) {//Cannot start an equation with an equals sign
       newEq = "";
     } else if (final != this.state.eq && !OP_REG.test(this.state.eq[this.state.eq.length - 1]) //Can only finish an equation if it is not already finished or the previous button pressed was an operator
     ) {     
+      newEq = newEq + value;
       final = this.evaluate(newEq);
       newEq = newEq + final;
       now = final;
