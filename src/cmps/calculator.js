@@ -7,10 +7,10 @@ const INT_STATE = {
   curr: "0", //What is currently displayed
   result: "" //If the equals button has been pressed it will equal the result of the current equal, otherwise nothing
 };
-const OP_REG = /[\+\-×÷]{1}/;
+const OP_REG = /[\+\-×\÷]{1}/;
 const SIGN_REG = /[\+\-]{1}/;
 const NEG_REG = /[\-]{1}/;
-const NON_NEG_REG = /[\+×÷]{1}/;
+const NON_NEG_REG = /[\+\×\÷]{1}/;
 
 class Calculator extends React.Component {
   constructor(props) {
