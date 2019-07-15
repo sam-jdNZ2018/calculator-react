@@ -91,7 +91,7 @@ class Calculator extends React.Component {
     //else if (NEG_REG.test(newEq[newEq.length - 1]) && NEG_REG.test(value) && OP_REG.test(newEq[newEq.length - 2]) ) {//Cannot have three operators in a row
        
     //} 
-    else if (NEG_REG.test(newEq[newEq.length - 1]) && OP_REG.test(value)) {//Cannot have three operators in a row
+    else if (OP_REG.test(newEq[newEq.length - 1]) && OP_REG.test(value)) {//Cannot have three operators in a row
       if (OP_REG.test(newEq[newEq.length - 2])) {
         newEq = newEq.slice(0, newEq.length - 2) + value;
       } else {
