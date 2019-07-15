@@ -88,7 +88,10 @@ class Calculator extends React.Component {
    if (newEq.length == 0 && !SIGN_REG.test(value)) { //Cannot start an equation with multiplication or division
       newEq = "";
     } 
-    else if (NEG_REG.test(newEq[newEq.length - 1]) && OP_REG.test(value)) {//Cannot have more than three operators in a row
+     else if (NEG_REG.test(newEq[newEq.length - 1]) && NEG_REG.test(value) && OP_REG.test(newEq[newEq.length - 2]) ) {
+       
+    } 
+    else if (NEG_REG.test(newEq[newEq.length - 1]) && NON_NEG_REG.test(value)) {
       if (OP_REG.test(newEq[newEq.length - 2])) {
         newEq = newEq.slice(0, newEq.length - 2) + value;
       } else {
@@ -96,10 +99,12 @@ class Calculator extends React.Component {
       }
       now = value;
     } 
-    else if (OP_REG.test(newEq[newEq.length - 1]) && NON_NEG_REG.test(value)) {//a non negative operator cannot follow a non negative operator
+    else if (OP_REG.test(newEq[newEq.length - 1]) && NON_NEG_REG.test(value)) {
       newEq = newEq.slice(0, newEq.length - 1) + value;
       now = value;
     } 
+    
+    
     else if (this.state.result == now) { //If you are using the result of the previous equation in a new equation
       newEq = this.state.result  + value;
       now = value;
@@ -179,13 +184,16 @@ class Calculator extends React.Component {
   //Return the string representation of the next floating point number in the equation starting from position
   //startPos in the provided text
   nextNumber(text, startPos) {
+    console.log("nextnumber start: " + startPos);
     let start = startPos;
     let end = text.length - 1;
       if (NEG_REG.test(text[startPos])) {
       start = start + 1;
     }
     for (let i = start; i < text.length; i++) {
+      console.log("loop i:  " + i + " text[i]: " + text[i]);
       if (OP_REG.test(text[i]) || text[i] == "=") {
+        console.log("text[i]: " + text[i] + " i: " + i);
         end = i - 1;
         break;
       }
@@ -219,7 +227,9 @@ class Calculator extends React.Component {
       total = parseFloat(value.slice(0, pos));
     }
     while (value[pos] != "=") {
+      console.log("value: " + value + " pos: " + pos + " value[pos]: "  + value[pos] +  " total: " + total);
       let end = this.nextNumber(value, pos + 1);
+      console.log("next number: " + (parseFloat(value.slice(pos + 1, end))));
       total = this.evalOp(total, parseFloat(value.slice(pos + 1, end)), value[pos]);
       pos = end;
     }
